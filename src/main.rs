@@ -1,16 +1,11 @@
+mod features;
+
 #[macro_use] extern crate rocket;
-
-use rocket::serde::json::{Value, json};
-
-#[get("/")]
-fn hello() -> Value {
-    json!({"ping": "pong"})
-}
 
 #[rocket::main]
 async fn main() {
     let _ = rocket::build()
-        .mount("/", routes![hello])
+        .mount("/", routes![features::users::controller::core::list_users])
         .launch()
         .await;
 }
