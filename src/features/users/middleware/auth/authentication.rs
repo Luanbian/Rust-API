@@ -13,7 +13,7 @@ pub struct JWT {
     pub claims: Claims
 }
 
-pub fn generate_jwt(_id: String) -> Result<String, Error> {
+pub fn generate_jwt(_id: &String) -> Result<String, Error> {
     let secret = String::from("asdfghjkl");
 
     let expiration = Utc::now()
@@ -22,7 +22,7 @@ pub fn generate_jwt(_id: String) -> Result<String, Error> {
         .timestamp();
 
     let claims = Claims {
-        subject_id: _id,
+        subject_id: String::from(_id),
         exp: expiration
     };
     

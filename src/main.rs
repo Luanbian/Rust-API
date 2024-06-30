@@ -2,7 +2,7 @@ mod features;
 
 #[macro_use] extern crate rocket;
 use rocket::serde::json::{Value, json};
-use features::users::controller::core::{list_users,list_users_by_id};
+use features::users::controller::{core::{list_users,list_users_by_id}, login::login};
 
 
 #[catch(404)]
@@ -20,7 +20,8 @@ async fn main() {
     let _ = rocket::build()
         .mount("/", routes![
             list_users,
-            list_users_by_id
+            list_users_by_id,
+            login
         ])
         .register("/", catchers![
             route_not_found,
