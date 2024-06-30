@@ -1,6 +1,6 @@
 use rocket::serde::Serialize;
 
-#[derive(Serialize)]
+#[derive(Serialize, Debug)]
 pub struct ApiResponse<T, E> {
     pub code: String,
     pub message: String,
